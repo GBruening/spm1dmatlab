@@ -16,13 +16,14 @@ colors         = parser.Results.color;
 labels         = parser.Results.labels;
 
 a = strcat('Y',string(unique(c)),'=Y(c==',string(unique(c)),',:);');
+u_c = unique(c);
 
 h0 = [];
 h1 = [];
 figure();clf();hold on;
 for k = 1:length(a)
     eval(a(k));
-    eval(strcat('Yp = Y',string(k),';'));
+    eval(strcat('Yp = Y',string(u_c(k)),';'));
     
     [y,ys]    = deal(mean(Yp,1), std(Yp,1));       
     x         = 0:numel(y)-1;
